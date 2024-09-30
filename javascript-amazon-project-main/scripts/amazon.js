@@ -4,13 +4,22 @@ import { cart } from '../data/cart-class.js';
 import {products, loadProductsFetch} from '../data/products-class.js'
 import { formatCurrency } from './utils/money.js';
 
+///// Handling asynchronous code using ASYNC AWAIT
+async function loadProductsPage(){
+  await loadProductsFetch();
+  renderProductsGrid();
+}
+
+loadProductsPage();
+
 ///// Handling asynchronous code using promises and FETCH
 //once the products finish loading, THEN we call renderProductsGrid()
+/*
 loadProductsFetch().then(() => {
   console.log(products);
   renderProductsGrid();
 });
-
+*/
 
 
 ///// Handling asynchronous code using promises
