@@ -4,7 +4,18 @@ import { cart } from '../data/cart-class.js';
 import {products, loadProducts} from '../data/products-class.js'
 import { formatCurrency } from './utils/money.js';
 
+new Promise((resolve) => {
+  loadProducts(() => {
+    resolve();
+  });
+}).then(() => {
+  renderProductsGrid();
+});
+
+
+/*
 loadProducts(renderProductsGrid);
+*/
 
 function renderProductsGrid(){
   let productsHTML = '';
