@@ -1,15 +1,17 @@
 //import * as cartModule from '../data/cart.js'
 
 import { cart } from '../data/cart-class.js';
-import {products, loadProducts, loadProductsFetch} from '../data/products-class.js'
+import {products, loadProductsFetch} from '../data/products-class.js'
 import { formatCurrency } from './utils/money.js';
 
 ///// Handling asynchronous code using promises and FETCH
 //once the products finish loading, THEN we call renderProductsGrid()
 loadProductsFetch().then(() => {
+  console.log(products);
   renderProductsGrid();
+});
 
-})
+
 
 ///// Handling asynchronous code using promises
 /*
@@ -75,6 +77,7 @@ function renderProductsGrid(){
         <div class="product-spacer"></div>
 
         ${product.extraInfoHTML()}
+
         <div class="added-to-cart js-added-to-cart-${product.id}">
           <img src="images/icons/checkmark.png">
           Added

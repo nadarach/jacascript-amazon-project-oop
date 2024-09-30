@@ -2,7 +2,7 @@ import { renderOrderSummary } from "./checkout/orderSummary.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 import {cart} from '../data/cart-class.js';
 import { loadCart } from "../data/cart-class.js";
-import { loadProducts, loadProductsFetch } from "../data/products-class.js";
+import { loadProductsFetch } from "../data/products-class.js";
 
 ///// Handling asynchronous code using promises and FETCH
 Promise.all([
@@ -16,6 +16,7 @@ Promise.all([
   renderOrderSummary();
   renderPaymentSummary();
 });
+
 
 ///// Handling asynchronous code using promises and Promise.all
 /*

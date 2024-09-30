@@ -100,11 +100,12 @@ export function loadProductsFetch(){
       return new Product(productDetails);
     });
   });
-  
+
   console.log('loading products');  
   return promise;
 }
 
+/*
 export function loadProducts(fun){
   const xhr = new XMLHttpRequest();
   xhr.addEventListener('load', () => {
@@ -123,6 +124,7 @@ export function loadProducts(fun){
   xhr.open('GET', 'https://supersimplebackend.dev/products');
   xhr.send();
 }
+*/
 
 /*
 export const products = [

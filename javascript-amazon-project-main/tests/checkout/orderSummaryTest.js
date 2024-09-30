@@ -1,6 +1,6 @@
 import {renderOrderSummary} from '../../scripts/checkout/orderSummary.js'
 import {cart} from '../../data/cart-class.js';
-import { loadProducts, loadProductsFetch } from '../../data/products-class.js';
+import {loadProductsFetch } from '../../data/products-class.js';
 
 //Integration test: testing many units/pieces of code working together (e.g. renderOrderSummary)
 //lets us test how the page looks, and how the page behaves
