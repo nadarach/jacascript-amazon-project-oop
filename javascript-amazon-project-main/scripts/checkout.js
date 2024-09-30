@@ -5,14 +5,32 @@ import { loadCart } from "../data/cart-class.js";
 import { loadProducts } from "../data/products-class.js";
 
 
+///// Handling asynchronous code using promises
+new Promise((resolve) => {
+  loadProducts(() => {
+    resolve();
+  });
+}).then(() => {
+  return new Promise(resolve => {
+    loadCart(() => {
+      resolve();
+    });
+  });
+}).then(() => {
+  renderOrderSummary();
+  renderPaymentSummary();
+})
+
+
 ///// Handling asynchronous code using callback functions
+/*
 loadProducts(() => {
   loadCart(() => {
     renderOrderSummary();
     renderPaymentSummary();
   });
 });
-
+*/
 
 
 
