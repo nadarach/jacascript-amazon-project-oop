@@ -1,9 +1,18 @@
 //import * as cartModule from '../data/cart.js'
 
 import { cart } from '../data/cart-class.js';
-import {products, loadProducts} from '../data/products-class.js'
+import {products, loadProducts, loadProductsFetch} from '../data/products-class.js'
 import { formatCurrency } from './utils/money.js';
 
+///// Handling asynchronous code using promises and FETCH
+//once the products finish loading, THEN we call renderProductsGrid()
+loadProductsFetch().then(() => {
+  renderProductsGrid();
+
+})
+
+///// Handling asynchronous code using promises
+/*
 new Promise((resolve) => {
   loadProducts(() => {
     resolve();
@@ -11,8 +20,9 @@ new Promise((resolve) => {
 }).then(() => {
   renderProductsGrid();
 });
+*/
 
-
+///// Handling asynchronous code using callback functions
 /*
 loadProducts(renderProductsGrid);
 */

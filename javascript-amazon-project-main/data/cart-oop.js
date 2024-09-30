@@ -112,11 +112,7 @@ function Cart(localStorageKey){
 }
 
 const cart = Cart('cart-oop');
-const businessCart = Cart('cart-business');
 
 cart.loadFromStorage();
-
-console.log(cart);
-console.log(businessCart);
 
 

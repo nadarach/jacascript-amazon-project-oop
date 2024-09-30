@@ -1,6 +1,6 @@
 import {renderOrderSummary} from '../../scripts/checkout/orderSummary.js'
 import {cart} from '../../data/cart-class.js';
-import { loadProducts } from '../../data/products-class.js';
+import { loadProducts, loadProductsFetch } from '../../data/products-class.js';
 
 //Integration test: testing many units/pieces of code working together (e.g. renderOrderSummary)
 //lets us test how the page looks, and how the page behaves
@@ -12,9 +12,15 @@ describe('Test suite : renderOrderSummary', () =>{
   beforeAll((done) => {
     //we use the beforeAll hook because we only need to load the products once (the beforeEach hook would load them multiple times)
     
+    //once the products finish loading, THEN we call done() to move to the next step
+    loadProductsFetch().then(() => {
+      done();
+    });
+
+    /*
     loadProducts(() => {
       done(); //doesn't go to the next step until the function is done loading products
-    });
+    });*/
 
   });
 

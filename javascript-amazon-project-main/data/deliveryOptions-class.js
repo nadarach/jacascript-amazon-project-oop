@@ -29,8 +29,6 @@ export const deliveryOptions = [{
   return new DeliveryOption(deliveryOptionDetails);
 });
 
-console.log(deliveryOptions);
-
 export function getDeliveryOption(deliveryOptionId){
   let deliveryOption; 
 
