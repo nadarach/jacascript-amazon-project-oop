@@ -1,10 +1,10 @@
 //import * as cartModule from '../data/cart.js'
 
 import { cart } from '../data/cart-class.js';
-import {products} from '../data/products-class.js'
+import {products, loadProducts} from '../data/products-class.js'
 import { formatCurrency } from './utils/money.js';
 
-renderProductsGrid();
+loadProducts(renderProductsGrid);
 
 function renderProductsGrid(){
   let productsHTML = '';
