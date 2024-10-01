@@ -9,13 +9,11 @@ describe('Test suite : renderOrderSummary', () =>{
   const productId1 = "e43638ce-6aa0-4b85-b27f-e1d07eb678c6";
   const productId2 = "15b6fc6f-327a-4ec4-896f-486349e85a3d";
 
-  beforeAll((done) => {
+  beforeAll(async () => {
     //we use the beforeAll hook because we only need to load the products once (the beforeEach hook would load them multiple times)
     
     //once the products finish loading, THEN we call done() to move to the next step
-    loadProductsFetch().then(() => {
-      done();
-    });
+    await loadProductsFetch();
 
     /*
     loadProducts(() => {

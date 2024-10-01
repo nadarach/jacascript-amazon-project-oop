@@ -1,4 +1,6 @@
-export const orders = JSON.parse(localStorage.getItem('orders')) || [];
+const ordersUnfiltered = JSON.parse(localStorage.getItem('orders')) || [];
+
+export const orders = ordersUnfiltered.filter(order => order.id);
 
 export function addOrder(order){
   orders.unshift(order);

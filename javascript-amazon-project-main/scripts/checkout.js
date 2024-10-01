@@ -1,25 +1,16 @@
 import { renderOrderSummary } from "./checkout/orderSummary.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
-import {cart} from '../data/cart-class.js';
-import { loadCart } from "../data/cart-class.js";
+import {cart, loadCartFetch} from '../data/cart-class.js';
 import { loadProductsFetch } from "../data/products-class.js";
 
 ///// Handling asynchronous code using ASYNC AWAIT
 async function loadCheckoutPage(){
 
-  try {
-    // throw 'error1';
-    
-    await loadProductsFetch();
-
-    //two (2) ways to create an error inside a promise
-    const value = await new Promise((resolve, reject) => {
-      // throw 'error2'; //to create the error synchronously (right away)
-      loadCart(() => {
-        // reject('error3'); //to create the error asyncrhonously (in the future)
-        resolve();
-      });
-    });
+  try {    
+    await Promise.all([
+      loadProductsFetch(),
+      loadCartFetch()
+    ]);
 
   } catch (error) {
     console.log('Unexpected error. Please try again later.');
@@ -31,11 +22,15 @@ async function loadCheckoutPage(){
 
 loadCheckoutPage();
 
+
+
+//////////////////////////////////////////////////////////////////////
+
 ///// Handling asynchronous code using promises and FETCH
 /*
 Promise.all([
   loadProductsFetch(),
-  new Promise((resolve) => {
+  new Promise((resolve, reject) => {
     loadCart(() => {
       resolve();
     })

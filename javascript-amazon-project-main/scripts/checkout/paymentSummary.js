@@ -60,7 +60,6 @@ export function renderPaymentSummary(){
 
   document.querySelector('.js-place-order')
   .addEventListener('click', async () => {
-
     try {
       const response = await fetch('https://supersimplebackend.dev/orders', {
         method: 'POST',
@@ -74,13 +73,14 @@ export function renderPaymentSummary(){
   
       const order = await response.json();
       addOrder(order);
-      //console.log(orders);
     } 
     catch (error) {
       console.log('Unexpected error. Try again later.');
     }
     
     //changing the href property changes the URL at the top of the browser
-    window.location.href = 'orders.html';
+    //window.location.href = 'orders.html';
+    console.log(orders);
+
   });
 }
