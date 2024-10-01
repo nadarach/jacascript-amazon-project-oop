@@ -1,5 +1,3 @@
-//import * as cartModule from '../data/cart.js'
-
 import { cart } from '../data/cart-class.js';
 import {products, loadProductsFetch} from '../data/products-class.js'
 import { formatCurrency } from './utils/money.js';
@@ -12,6 +10,7 @@ async function loadProductsPage(){
 
 loadProductsPage();
 
+
 ///// Handling asynchronous code using promises and FETCH
 //once the products finish loading, THEN we call renderProductsGrid()
 /*
@@ -20,7 +19,6 @@ loadProductsFetch().then(() => {
   renderProductsGrid();
 });
 */
-
 
 ///// Handling asynchronous code using promises
 /*
