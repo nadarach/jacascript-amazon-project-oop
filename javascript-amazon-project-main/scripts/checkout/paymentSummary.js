@@ -77,7 +77,7 @@ export function renderPaymentSummary(){
       //console.log(orders);
     } 
     catch (error) {
-      console.log('Unexpected error. Try again later');
+      console.log('Unexpected error. Try again later.');
     }
     
     //changing the href property changes the URL at the top of the browser
