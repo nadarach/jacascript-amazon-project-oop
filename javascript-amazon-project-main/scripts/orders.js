@@ -1,4 +1,4 @@
-import {orders, getProductQuantity} from '../data/orders.js'
+import {orders, getOrderProduct} from '../data/orders.js'
 import { getProduct, loadProductsFetch } from '../data/products-class.js';
 import {loadCartFetch, cart} from '../data/cart-class.js'
 import { formatCurrency } from './utils/money.js';
@@ -50,15 +50,14 @@ async function loadPage(){
     link.addEventListener('click', () => {
       const productId = link.dataset.productId;
       const orderId = link.dataset.orderId;
-      const productQuantity = getProductQuantity(orderId, productId);
+      const product = getOrderProduct(orderId, productId);
 
-      //cart.addToCart(productId, productQuantity);
+      //cart.addToCart(productId, product.quantity);
       cart.addToCart(productId, 1);
       document.querySelector('.js-cart-quantity').innerHTML = cart.updateCartQuantity() || '';
 
     });
   });
-
 }
 
 loadPage();

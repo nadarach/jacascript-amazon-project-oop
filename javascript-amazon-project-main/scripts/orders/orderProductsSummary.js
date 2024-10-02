@@ -38,9 +38,10 @@ export function renderOrderProductSummary(order){
         </div>
 
         <div class="product-actions">
-          <a href="tracking.html">
+          <a href="tracking.html?orderId=${orderId}&productId=${productId}">
             <button class="track-package-button
-            js-track-package-${productId} button-secondary">
+            js-track-package
+            js-track-package-${productId} button-secondary" data-order-id=${orderId} data-product-id=${productId}>
               Track package
             </button>
           </a>

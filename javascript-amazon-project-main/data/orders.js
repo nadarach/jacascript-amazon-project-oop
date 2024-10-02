@@ -21,7 +21,7 @@ export function getOrder(orderId){
   return matchingOrder;
 }
 
-export function getProductQuantity(orderId, productId) {
+export function getOrderProduct(orderId, productId) {
   let matchingOrder = getOrder(orderId);
 
   let matchingProduct = matchingOrder.products.find(product => product.productId === productId);
@@ -30,5 +30,5 @@ export function getProductQuantity(orderId, productId) {
     return;
   }
 
-  return matchingProduct.quantity;
+  return matchingProduct;
 }
