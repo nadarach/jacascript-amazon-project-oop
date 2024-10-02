@@ -1,10 +1,11 @@
 import {orders} from '../data/orders.js'
 import { getProduct, loadProductsFetch } from '../data/products-class.js';
+import {loadCartFetch, cart} from '../data/cart-class.js'
 import { formatCurrency } from './utils/money.js';
 import { formatDate } from './utils/time.js';
 
-
 await loadProductsFetch();
+await loadCartFetch();
 
 console.log(orders);
 

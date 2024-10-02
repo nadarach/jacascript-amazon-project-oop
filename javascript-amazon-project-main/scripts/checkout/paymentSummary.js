@@ -1,8 +1,10 @@
 import {cart} from '../../data/cart-class.js'
+//import {loadCartFetch} from '../../data/cart-class.js'
 import { getDeliveryOption } from '../../data/deliveryOptions-class.js';
 import { orders, addOrder } from '../../data/orders.js';
 import { getProduct } from '../../data/products-class.js';
 import { formatCurrency } from '../utils/money.js';
+import {loadCheckoutPage} from '../checkout.js'
 
 export function renderPaymentSummary(){
 
@@ -78,6 +80,10 @@ export function renderPaymentSummary(){
       console.log('Unexpected error. Try again later.');
     }
     
+    cart.cartItems = [];
+    cart.saveToStorage();
+
+    await loadCheckoutPage();
     //changing the href property changes the URL at the top of the browser
     //window.location.href = 'orders.html';
     console.log(orders);

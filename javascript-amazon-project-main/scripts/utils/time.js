@@ -9,11 +9,10 @@ export function isWeekend(date){
 export default isWeekend;
 
 export function formatDate(date){
-  const dateObject = dayjs(date)
+  const dateObject = dayjs(date);
   let dateString = dateObject.format('dddd, MMMM D');
 
   const day = dateObject.get('date') % 10;
-  console.log(day);
 
   if (day === 1) {
     dateString += 'st';

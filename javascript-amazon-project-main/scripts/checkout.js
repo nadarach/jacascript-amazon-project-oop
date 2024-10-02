@@ -4,7 +4,7 @@ import {cart, loadCartFetch} from '../data/cart-class.js';
 import { loadProductsFetch } from "../data/products-class.js";
 
 ///// Handling asynchronous code using ASYNC AWAIT
-async function loadCheckoutPage(){
+export async function loadCheckoutPage(){
 
   try {    
     await Promise.all([
