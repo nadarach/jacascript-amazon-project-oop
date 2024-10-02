@@ -1,11 +1,13 @@
-import {orders} from '../data/orders.js'
+import {orders, getProductQuantity} from '../data/orders.js'
 import { getProduct, loadProductsFetch } from '../data/products-class.js';
 import {loadCartFetch, cart} from '../data/cart-class.js'
 import { formatCurrency } from './utils/money.js';
 import { formatDate } from './utils/time.js';
+import { renderOrderProductSummary } from './orders/orderProductsSummary.js';
 
 await loadProductsFetch();
 await loadCartFetch();
+//renderCheckoutHeader();
 
 console.log(orders);
 
@@ -37,48 +39,18 @@ orders.forEach(order => {
 
 document.querySelector('.js-orders-grid').innerHTML = ordersSummaryHTML;
 
-function renderOrderProductSummary(order){
-  let orderProductsHTML = '';
-  order.products.forEach(product => {
-    const productId = product.productId;
-    const matchingProduct = getProduct(productId);
-    
-    orderProductsHTML += `
-        <div class="product-image-container 
-      js-product-image-container-${order.id}">
-          <img src=${matchingProduct.image}>
-        </div>
+document.querySelector('.js-cart-quantity').innerHTML = cart.updateCartQuantity() || '';
 
-        <div class="product-details 
-        js-product-details-${order.id}">
-          <div class="product-name">
-          ${matchingProduct.name}
-          </div>
-          <div class="product-delivery-date">
-            Arriving on: ${formatDate(product.estimatedDeliveryTime)}
-          </div>
+document.querySelectorAll('.js-buy-again-button').forEach(link => {
+  link.addEventListener('click', () => {
+    const productId = link.dataset.productId;
+    const orderId = link.dataset.orderId;
+    const productQuantity = getProductQuantity(orderId, productId);
 
-          <div class="product-quantity">
-            Quantity: ${product.quantity}
-          </div>
-          
-          <button class="buy-again-button
-          js-buy-again-${productId} button-primary">
-            <img class="buy-again-icon" src="images/icons/buy-again.png">
-            <span class="buy-again-message">Buy it again</span>
-          </button>
-        </div>
+    //cart.addToCart(productId, productQuantity);
+    cart.addToCart(productId, 1);
+    document.querySelector('.js-cart-quantity').innerHTML = cart.updateCartQuantity() || '';
 
-        <div class="product-actions">
-          <a href="tracking.html">
-            <button class="track-package-button
-            js-track-package-${productId} button-secondary">
-              Track package
-            </button>
-          </a>
-        </div>
-    `;
   });
+});
 
-  return orderProductsHTML;
-}
