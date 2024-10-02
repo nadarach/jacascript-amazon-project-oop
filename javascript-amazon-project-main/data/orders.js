@@ -11,12 +11,18 @@ function saveToStorage(){
   localStorage.setItem('orders', JSON.stringify(orders));
 }
 
-export function getProductQuantity(orderId, productId) {
+export function getOrder(orderId){
   let matchingOrder = orders.find((order) => order.id === orderId);
 
   if(!matchingOrder) {
     return;
   }
+
+  return matchingOrder;
+}
+
+export function getProductQuantity(orderId, productId) {
+  let matchingOrder = getOrder(orderId);
 
   let matchingProduct = matchingOrder.products.find(product => product.productId === productId);
   
